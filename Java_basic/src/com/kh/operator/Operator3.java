@@ -1,0 +1,43 @@
+package com.kh.operator;
+
+public class Operator3 {
+
+	/*
+	 * 비교 연산자
+	 * - 대소 비교 : <, >, <=, >=
+	 * - 동등 비교 : ==, !=
+	 * 
+	 * 원시타입
+	 * - 정수, 실수, 문자 등의 기본 변수는 ==. != 등으로 비교가 가능함.
+	 * 
+	 * 객체 비교(String)
+	 * - String같은 객체는 참조형이라서 ==로 비교 시 문제가 발생한다.
+	 * - 문자열1 == 문자열2 -> 문자열1.equals(문자열2);을 사용
+	 * 	 (객체 타입은 실제 값을 가지고 있지 않고, 실제 값이 들어있는 메모리주소를 가지고 있어서 비교 시 주소 값이 비교됨)
+	 */
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 20;
+		
+		System.out.println("a == b : " + (a == b));
+		System.out.println("a <= b : " + (a <= b));
+		
+		String str1 = "hello";
+		String str2 = "hello";
+		System.out.println(str1 == str2);
+		// 자바의 문자열 리터럴은 String Pool이라는 메모리 영역에 저장되고, 
+		// 동일한 리터럴을 참조하게 되면, 기존에 저장된 상수 값의 메모리를 재사용함.
+		// => 한번 리터럴 메모리에 값을 올려두면 재사용해서 효율성을 높인다.
+		
+		String str3 = new String("hello");
+		System.out.println(str2 == str3);
+		// 일반적으로 객체는 생성 시 마다 각각 다른 메모리를 가지고 있고, 
+		// 변수에는 해당 메모리에 주소가 저장되기 때문에 값이 동일하더라도 == or !=로 비교 시 주소 값이 비교되어 false가 된다.
+		
+		System.out.println(str2.equals(str3));
+		// 각 객체마다 비교 기준이 정의되어 있는 equals 함수를 사용해 비교해야 한다.
+		
+		
+	}
+	
+}

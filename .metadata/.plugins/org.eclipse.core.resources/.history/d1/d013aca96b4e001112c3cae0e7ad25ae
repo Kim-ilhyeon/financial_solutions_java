@@ -1,0 +1,23 @@
+package com.kh.basic;
+
+public class Output {
+
+	public static void main(String[] args) {
+		// 코드를 사용하는 영역
+		
+		// 출력문
+		// print() -> 기본적인 출력문, ()안에 있는 값을 Console창에 출력한다.
+		System.out.print("안녕하세요.\n");
+		System.out.print("안녕하세요.\n");
+		
+		// println() -> 끝에 개행문자를 포함한 출력문
+		System.out.println("안녕하세요. 김일현입니다.");
+		System.out.println("안녕하세요. 김일현입니다.");
+
+		String name = "김일현";
+		int age = 26;
+		String gender = "남";
+
+	}
+
+}

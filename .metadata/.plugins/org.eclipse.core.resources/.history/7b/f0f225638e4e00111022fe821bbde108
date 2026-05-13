@@ -1,0 +1,18 @@
+package com.kh.operator;
+
+import java.util.Scanner;
+
+public class Operator4 {
+	
+	/*
+	 * 논리 연산자
+	 * : 두 개의 논리 값을 연산해주는 연산자
+	 * 
+	 * 논리값 && 논리값 : 왼쪽, 오른쪽의 두 조건이 모두 true일 경우에 true이다.
+	 * 논리값 || 논리값 : 왼쪽, 오른쪽의 두 조건 중 하나라도 true일 경우에 true이다.
+	 */
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+	}
+}
