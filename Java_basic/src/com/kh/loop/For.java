@@ -18,6 +18,8 @@ public class For {
 		
 		// "안녕하세요."에서 한글자씩 떼서 출력
 		String hello = "안녕하세요.";
+		
+		System.out.println(hello.length());		// => 문자열 hello의 길이를 출력하는 부분
 		for (int i = 0; i < 6; i++) {
 			System.out.println(hello.charAt(i));
 		}
