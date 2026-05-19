@@ -35,31 +35,26 @@ public class Practice4 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int[] submit = new int[28];
 		boolean[] submitted = new boolean[30];
 		
-		System.out.println("입력 : ");
-		for (int i = 0; i < submit.length; i++) {
+		// 28번 반복하여 해당 submitted배열의 (번호 - 1)의 인덱스 값을 true로 바꿔줌
+		for (int i = 0; i < 28; i++) {
+			System.out.print("입력 : ");
 			int num = sc.nextInt();
-			submit[i] = num;
-		}
-
-		// 1부터 30까지 순회하면서 제출리스트와 비교하여 일치하는게 있으면 제출여부 리스트의 값을 true로 바꿔줌
-		for (int i = 1; i <= 30; i++) {
-			for (int ns : submit) {
-				if (i == ns) {
-					submitted[i-1] = true;
-					break;
-				}
-			}
+			submitted[num - 1] = true;
 		}
 		
-		// 한번 검사를 한 제출여부 리스트에서 false인 값들의 index+1값을 출력 (출석번호는 index의 번호보다 1씩 높기 때문에)
-		for (int j = 0; j < submitted.length; j++) {
-			if (!submitted[j]) {
-				System.out.println(j+1);
+		for (int i = 0; i < submitted.length; i++) {
+			if (!submitted[i]) {
+				System.out.println(i + 1);
 			}
 		}
+
+
+
+		
+		// 한번 검사를 한 제출여부 리스트에서 false인 값들의 index+1값을 출력 (출석번호는 index의 번호보다 1씩 높기 때문에)
+
 		
 		
 

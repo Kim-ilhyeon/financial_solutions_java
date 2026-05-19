@@ -40,7 +40,7 @@ public class Practice2 {
 		}
 		
 		// 최솟값 구하기
-		int min = 0;
+		int min = 1000000;		// int min = nArr[0];
 		for (int i = 0; i < nArr.length-1; i++) {
 			if (nArr[i] > nArr[i+1]) {
 				min = nArr[i+1];
@@ -50,7 +50,7 @@ public class Practice2 {
 		}
 		
 		// 최대값 구하기
-		int max = 0;
+		int max = -1000000;		// int max = nArr[0];
 		for (int i = 0; i < nArr.length-1; i++) {
 			if (nArr[i] > nArr[i+1]) {
 				max = nArr[i];

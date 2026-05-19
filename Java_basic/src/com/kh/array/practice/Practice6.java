@@ -2,7 +2,7 @@ package com.kh.array.practice;
 
 import java.util.Scanner;
 
-public class Practice5 {
+public class Practice6 {
 
 	/*
 	 * [바구니 뒤집기]
@@ -32,7 +32,7 @@ public class Practice5 {
 		Scanner sc = new Scanner(System.in);
 		
 		int pNum = sc.nextInt();	// 바구니의 갯수
-		int fNum = sc.nextInt();	// 뒤집기 횟수
+		int fNum = sc.nextInt();	// 뒤집기 작업을 할 횟수
 		
 		// 바구니 배열 만들고 1 ~ N까지의 값으로 초기화
 		int[] pockets = new int[pNum];
@@ -40,20 +40,20 @@ public class Practice5 {
 			pockets[i] = i+1;
 		}
 		
-		for (int f = 0; f < fNum; f++) {
-			int i = sc.nextInt() - 1;	// i번째 순서 값
-			int j = sc.nextInt() - 1;	// j번째 순서 값
-			int leng = j - i + 1;		// 복사본 배열의 길이
-			
-			// i번째 부터 j번째까지의 값들은 순서대로 저장해놓을 복사본 배열 생성
-			int[] copy = new int[leng];
-			for (int k = 0, h = i; k <= copy.length; k++, h++) {
-				copy[k] = pockets[h];
+		for (int k = 0; k < fNum; k++) {
+			int i = sc.nextInt() - 1;	// i번째 바구니부터 -> index로 변경
+			int j = sc.nextInt() - 1;	// j번째 바구니부터 -> index로 변경
+		
+			// i번째 바구니부터 j번째 인덱스 값까지 역순으로 정렬
+			// 뒤에 값부터 순차적으로 앞으로 넣자!!
+			// 앞에 값이 사라지기 전에 보관을 잠시 해야겠다.
+			while (i < j) {
+				int tmp = pockets[i];
+				pockets[i] = pockets[j];
+				pockets[j] = tmp;
+				i++;
+				j--;
 			}
-			
-			for (int k = i, h = copy.length-1; k <= j; k++, h--) {
-				pockets[k] = copy[h];
-			}			
 		}
 		
 		for (int ps : pockets) {
@@ -62,6 +62,8 @@ public class Practice5 {
 		
 		
 		
+		
+
 	}
 
 }
