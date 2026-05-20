@@ -48,12 +48,12 @@ public class Practice8 {
 			}
 		}
 		
-		int max = dArray[0][0];
+		int max = dArray[0][0];		// 가장 작은 값(Integer.MIN_VALUE;) 또는 첫번째 값
 		int rIndex = 0;
 		int cIndex = 0;
 		
 		for (int i = 0; i < dArray.length; i++) {
-			for (int j = 0; j < dArray[i].length; j++) {
+			for (int j = 0; j < dArray[i].length-1; j++) {
 				if (max > dArray[i][j]) {
 					max = max;	
 				} else {

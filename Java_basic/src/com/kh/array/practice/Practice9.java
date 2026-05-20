@@ -47,15 +47,13 @@ public class Practice9 {
 		// 색종이의 갯수 confetti
 		int pNum = sc.nextInt();
 		
-//		int[][] confetti = new int[pNum][2];
-		
 		for (int i = 0; i < pNum; i++) {
 			// 왼쪽 아래 모서리 점의 좌표
-			int x = sc.nextInt();
-			int y = sc.nextInt();
+			int x = sc.nextInt()-1;	// 왼쪽으로부터 색종이의 거리 (열)
+			int y = sc.nextInt()-1;	// 아래로부터 색종이의 거리 (행)
 			
-			for (int j = x; j < x+10; j++) {
-				for (int k = y; k < y+10; k++) {
+			for (int j = y; j < y+10; j++) {
+				for (int k = x; k < x+10; k++) {
 					paper[j][k] = true;					
 				}
 			}
