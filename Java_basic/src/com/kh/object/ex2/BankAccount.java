@@ -7,6 +7,18 @@ public class BankAccount {
 	String accountNumber;
 	
 	// 생성자
+	/*
+	 * 기본 생성자 : 매개변수가 없는 생성자
+	 * 	- 개발자가 생성자를 정의하지 않으면 컴파일 과정에서 자동으로 생성
+	 * 	- 만약 생성자를 하나라도 정의하면 기본 생성자는 생성되지 않는다.
+	 */
+	public BankAccount() {
+		System.out.println("생성자 실행됨.");
+	}
+	public BankAccount(int bal, String accNum) {
+		balance = bal;
+		accountNumber = accNum;
+	}
 	
 	// 메소드
 	// 입금

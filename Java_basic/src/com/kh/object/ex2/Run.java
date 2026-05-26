@@ -17,6 +17,8 @@ public class Run {
 		ac1.checkMyBalance();
 		ac2.checkMyBalance();
 		
+		BankAccount ac3 = new BankAccount(0, "ac3333");
+		
 
 	}
 
