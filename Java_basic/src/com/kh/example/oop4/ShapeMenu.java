@@ -13,18 +13,20 @@ public class ShapeMenu {
 		int menuNum = 0;
 		while (menuNum != 9) {
 			System.out.println("==== 도형 프로그램 ====");
-			System.out.println("3. 삼각형\n4. 사각형\n9. 종료");
+			System.out.println("3. 삼각형\n4. 사각형\n9. 프로그램 종료");
 			System.out.print("메뉴번호 : ");
 			menuNum = sc.nextInt();
 			sc.nextLine();
 			switch (menuNum) {
-				case 3 : triangleMenu();
+				case 3 : 
+					triangleMenu();
 					break;
-				case 4 : squareMenu();
+				case 4 : 
+					squareMenu();
 					break;
 				case 9 : 
 					System.out.println("프로그램을 종료 합니다.");
-					break;
+					return;	// 반환 값 반환 + 함수 종료
 				default : 
 					System.out.println("잘못된 번호입니다. 다시 입력 하세요.");
 			}
@@ -80,8 +82,10 @@ public class ShapeMenu {
 		}
 	}
 	
+	// type은 삼각형과 사각형인지를 구분해주는 번호, menuNum은 고른 메뉴번호
 	public void inputSize(int type, int menuNum) {
 		switch (type) {
+		// 삼각형 : type = 3
 		case 3 : 
 			switch (menuNum) {
 			case 1 : 
@@ -100,7 +104,10 @@ public class ShapeMenu {
 				break;
 			}
 			break;
+		// 사각형 : type = 4
 		case 4 : 
+			// 높이와 너비를 받는 중복되는 기능을 case를 묶는 것 보다
+			// 입력받는 것을 기능으로 보아 함수로 빼는 것이 좀 더 좋은 방법이다.
 			switch (menuNum) {
 			case 1 : {
 				System.out.print("높이 : ");
@@ -110,8 +117,8 @@ public class ShapeMenu {
 				sc.nextLine();
 				double calcP = scr.calcPerimeter(height, width);
 				System.out.println("사각형 둘레 : " + calcP);
-				break;
 			}
+				break;
 			case 2 : {
 				System.out.print("높이 : ");
 				int height = sc.nextInt();
@@ -120,8 +127,8 @@ public class ShapeMenu {
 				sc.nextLine();
 				double calcArea = scr.calcArea(height, width);
 				System.out.println("사각형 면적 : " + calcArea);
-				break;
 			}
+				break;
 			case 3 : 
 				System.out.print("색깔 : ");
 				String color = sc.nextLine();
@@ -133,12 +140,12 @@ public class ShapeMenu {
 	
 	public void printInformation(int type) {
 		if (type == 3) {
-			String result1 = tc.print();
-			System.out.println(result1);
+			String result = tc.print();
+			System.out.println(result);
 		}
 		if (type == 4) {
-			String result2 = scr.print();
-			System.out.println(result2);
+			String result = scr.print();
+			System.out.println(result);
 		}
 	}
 

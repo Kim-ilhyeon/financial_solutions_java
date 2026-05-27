@@ -6,12 +6,12 @@ public class SquareController {
 	
 	// 메소드
 	public double calcPerimeter(double height, double width) {
-		s = new Shape(0, height, width);
+		s = new Shape(4, height, width);
 		return s.getWidth()*2 + s.getHeight()*2;
 	}
 	
 	public double calcArea(double height, double width) {
-		s = new Shape(0, height, width);
+		s = new Shape(4, height, width);
 		return s.getWidth() * s.getHeight();
 	}
 	

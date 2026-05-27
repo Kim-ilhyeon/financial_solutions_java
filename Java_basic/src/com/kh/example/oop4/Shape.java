@@ -2,7 +2,7 @@ package com.kh.example.oop4;
 
 public class Shape {
 	// 필드
-	private int type;		// 도형 타입 번호
+	private int type;		// 도형 타입 번호 (3=삼각형, 4=사각형)
 	private double height;	// 높이
 	private double width;	// 너비
 	private String color = "white";	// 색상 (기본값 : white)
@@ -14,12 +14,12 @@ public class Shape {
 		this.type = type;
 		this.height = height;
 		this.width = width;
-		this.color = "white";
+//		this.color = "white";
 	}
 	
 	// 메소드
 	public String information() {
-		String result = height + " " + width + " " + color;
+		String result = this.height + " " + this.width + " " + this.color;
 		return result;
 	}
 	
