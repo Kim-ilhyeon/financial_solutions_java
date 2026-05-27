@@ -29,12 +29,12 @@ public class SnackMenu {
 		
 		System.out.println(scr.saveData(kind, name, flavor, numOf, price));
 		System.out.print("저장한 정보를 확인하시겠습니까? (y/n) : ");
-		String checkOf = sc.next().toLowerCase();
+		char checkOf = sc.next().toLowerCase().charAt(0);
 		
-		if (checkOf.equals("y")) {
+		if (checkOf == 'y') {
 			System.out.println(scr.confirmData());
 		}
-		if (checkOf.equals("n")) {
+		if (checkOf == 'n') {
 			return;
 		}
 		

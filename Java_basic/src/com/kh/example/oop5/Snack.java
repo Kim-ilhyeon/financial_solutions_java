@@ -22,7 +22,7 @@ public class Snack {
 	}
 	
 	// 메소드
-	public String  information() {
+	public String information() {
 		return (kind + "(" + name + " - " + flavor + ") " + numOf + "개 " + price + "원");		
 	}
 
