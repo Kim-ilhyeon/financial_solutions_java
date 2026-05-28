@@ -16,7 +16,10 @@ public class ProductController {
 		for (int i = 0; i < pro.length; i++) {
 			if (pro[i] == null) {
 				pro[i] = new Product(pName, price, brand);
-				return;
+				break;
+//				return;
+			} else {
+				System.out.println("목록이 가득차서 추가할 수가 없습니다.");
 			}
 		}
 	}
