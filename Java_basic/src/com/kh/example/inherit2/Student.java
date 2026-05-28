@@ -30,7 +30,7 @@ public class Student extends Person {
 	}
 
 	public String toString() {
-		return super.toString() + ", " + grade + ", " + major;
+		return super.toString() + ", " + this.grade + ", " + this.major;
 	}
 	
 	

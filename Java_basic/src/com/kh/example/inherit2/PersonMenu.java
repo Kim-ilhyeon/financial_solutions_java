@@ -9,12 +9,15 @@ public class PersonMenu {
 	
 	// 메소드
 	public void mainMenu() {
+		Student[] sArr = pc.printStudent();
+		Employee[] eArr = pc.printEmployee();
 		while (true) {
-			System.out.println("학생은 최대 3명까지 저장할 수 있습니다.");
 			int[] cArr = pc.personCount();
+			System.out.println("학생은 최대 " + sArr.length + "명까지 저장할 수 있습니다.");
 			System.out.println("현재 저장된 학생은 " + cArr[0] + "명입니다.");
-			System.out.println("사원은 최대 10명까지 저장할 수 있습니다.");
+			System.out.println("사원은 최대 " + eArr.length + "명까지 저장할 수 있습니다.");
 			System.out.println("현재 저장된 사원은 " + cArr[1] + "명입니다.");
+			System.out.println();
 			
 			System.out.println("==== 메뉴 ====");
 			System.out.println("1. 학생 메뉴");
@@ -95,7 +98,7 @@ public class PersonMenu {
 		if (cArr[0] == 3) {
 			System.out.println("학생을 담을 수 있는 공간이 꽉 찼기 때문에 학생 추가를 종료하고, 학생 메뉴로 돌아갑니다.");
 			notWhether = false;
-			return;
+//			return;
 		}
 		while (notWhether) {
 			System.out.print("학생 이름 : ");
@@ -103,9 +106,9 @@ public class PersonMenu {
 			System.out.print("학생 나이 : ");
 			int age = sc.nextInt();
 			System.out.print("학생 키 : ");
-			int height = sc.nextInt();
+			double height = sc.nextInt();
 			System.out.print("학생 몸무게 : ");
-			int weight = sc.nextInt();
+			double weight = sc.nextInt();
 			System.out.print("학생 학년 : ");
 			int grade = sc.nextInt();
 			sc.nextLine();
@@ -156,9 +159,9 @@ public class PersonMenu {
 			System.out.print("사원 나이 : ");
 			int age = sc.nextInt();
 			System.out.print("사원 키 : ");
-			int height = sc.nextInt();
+			double height = sc.nextInt();
 			System.out.print("사원 몸무게 : ");
-			int weight = sc.nextInt();
+			double weight = sc.nextInt();
 			System.out.print("사원 급여 : ");
 			int salary = sc.nextInt();
 			sc.nextLine();

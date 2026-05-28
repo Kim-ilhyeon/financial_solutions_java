@@ -11,18 +11,16 @@ public class PersonController {
 		int sCount = 0;
 		int eCount = 0;
 		for (Student st : s) {
-			if (st != null) {
-				sCount++;
-			} else {
-				break;
+			if (st == null) {
+				break;				
 			}
+			sCount++;
 		}
 		for (Employee emp : e) {
-			if (emp != null) {
-				eCount++;
-			} else {
+			if (emp == null) {
 				break;
 			}
+			eCount++;
 		}
 		cArr[0] = sCount;
 		cArr[1] = eCount;
@@ -42,10 +40,10 @@ public class PersonController {
 		return s;
 	}
 	
-	public void insertEmployee(String name, int age, double height, double weight, int salary, String dempt) {
+	public void insertEmployee(String name, int age, double height, double weight, int salary, String dept) {
 		for (int i = 0; i< e.length; i++) {
 			if (e[i] == null) {
-				e[i] = new Employee(name, age, height, weight, salary, dempt);
+				e[i] = new Employee(name, age, height, weight, salary, dept);
 				break;
 			}
 		}

@@ -30,7 +30,7 @@ public class Employee extends Person {
 	}
 
 	public String toString() {
-		return super.toString() + ", " + salary + ", " + dept;
+		return super.toString() + ", " + this.salary + ", " + this.dept;
 	}
 	
 	
