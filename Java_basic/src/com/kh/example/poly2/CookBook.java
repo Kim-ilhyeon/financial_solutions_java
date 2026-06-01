@@ -24,7 +24,7 @@ public class CookBook extends Book {
 	
 	
 	// getter / setter
-	public boolean getCoupon() {
+	public boolean isCoupon() {
 		return coupon;
 	}
 	

@@ -2,7 +2,7 @@ package com.kh.interface1;
 
 public class Run {
 	public static void main (String[] args) {
-		// interface는 객체 생성을 할 수는 없지만 참조변수로 사용이 가능하다.
+		// interface는 객체 생성을 할 수는 없지만 참조변수로는 사용이 가능하다.
 		Animal dog1 = new Dog();
 		
 		dog1.speak();

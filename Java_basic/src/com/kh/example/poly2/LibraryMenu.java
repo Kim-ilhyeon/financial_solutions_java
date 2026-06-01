@@ -61,7 +61,7 @@ public class LibraryMenu {
 				break;
 			}
 			System.out.print(i + "번 도서 : ");
-			String bookInfo = bList[i].toString();
+			String bookInfo = bList[i].toString();	// toString()을 명시적으로 작성하지 않아도 toString()이 호출된다. -> Java는 주소값을 보여주지 않기 때문에
 			System.out.println(bookInfo);
 		}
 	}
@@ -81,7 +81,7 @@ public class LibraryMenu {
 	}
 	
 	public void rentBook() {
-		selectAll();
+		this.selectAll();
 		
 		System.out.print("대여할 도서 번호 선택 : ");
 		int rentNum = sc.nextInt();
@@ -98,6 +98,9 @@ public class LibraryMenu {
 			break;
 		case 2 : 
 			System.out.println("성공적으로 대여 되었습니다. 요리학원 쿠폰이 발급 되었으니 마이페이지에서 확인하세요.");
+			break;
+		case 3 : 
+			System.out.println("해당 번째에 책을 찾을 수 없습니다.");
 		}
 		
 	}
