@@ -42,6 +42,7 @@ public class TokenMenu {
 		String token = tc.afterToken(str);
 		System.out.println("토큰 처리 후 글자 : " + token.toString());
 		System.out.println("토큰 처리 후 개수 : " + token.length());
+		System.out.println("모두 대문자로 변환 : " + token.toUpperCase());
 	}
 	
 	public void inputMenu() {
@@ -52,7 +53,7 @@ public class TokenMenu {
 		System.out.println("첫글자 대문자 : " + firstCap);
 		
 		System.out.print("찾을 문자 하나를 입력하세요 : ");
-		char findChar = sc.next().charAt(0);
+		char findChar = sc.nextLine().charAt(0);
 		int findNum = tc.findChar(inputStr, findChar);
 		
 		System.out.println(findChar + "문자가 들어간 개수 : " + findNum + "개");
