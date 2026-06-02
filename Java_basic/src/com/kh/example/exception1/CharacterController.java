@@ -14,10 +14,10 @@ public class CharacterController {
 			char ch = s.charAt(i);
 			
 			if (ch == ' ') {
-				throw new CharCheckException();
+				throw new CharCheckException("체크할 문자열 안에 공백이 포함되어 있습니다.");
 			}
 			
-			if ((ch >= 60 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 32) {
+			if ((ch >= 60 && ch <= 90) || (ch >= 97 && ch <= 122)) {
 				count++;
 			}
 		}
