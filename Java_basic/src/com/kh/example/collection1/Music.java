@@ -1,5 +1,7 @@
 package com.kh.example.collection1;
 
+import java.util.Objects;
+
 public class Music {
 	// 필드
 	private String title;	// 곡명
@@ -41,17 +43,20 @@ public class Music {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Music) {
-			return this.title.equals(((Music) obj).getTitle()) && this.singer.equals(((Music) obj).getSinger());
+			Music m = (Music)obj;
+			return this.title.equals(m.getTitle()) && this.singer.equals(m.getSinger());
 		}
 		return super.equals(obj);
 	}
 	@Override
 	public int hashCode() {
-		return super.hashCode();
+		// Objects.hash(비교한 필드값1, 2 . .필드값1 .);
+		// 비교값을 통한 해시코드를 만들어 주는 메소드
+		return Objects.hash(title, singer);
 	}
 	@Override
 	public String toString() {
-		return "Music [title=" + title + ", singer=" + singer + "]";
+		return this.singer + " - " + this.title;
 	}
 	
 	
