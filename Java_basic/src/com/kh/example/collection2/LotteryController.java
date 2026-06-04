@@ -30,7 +30,7 @@ public class LotteryController {
 		list.addAll(lottery);
 		if (lottery.size() >= 4) {
 			while (win.size() < 4) {	
-				int random = (int)(Math.random() * (list.size()-1) + 1);
+				int random = (int)(Math.random() * (list.size()-1));
 				win.add(list.get(random));
 				list.remove(random);
 			}
@@ -45,6 +45,11 @@ public class LotteryController {
 	}
 	
 	public boolean searchWinner(Lottery l) {
+		for (Lottery wList : win) {
+			if (wList.equals(l)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
