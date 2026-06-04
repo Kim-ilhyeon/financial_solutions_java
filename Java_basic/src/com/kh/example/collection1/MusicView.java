@@ -1,0 +1,48 @@
+package com.kh.example.collection1;
+
+import java.util.Scanner;
+
+public class MusicView {
+	// 필드
+	private Scanner sc = new Scanner(System.in);
+	private MusicController mc = new MusicController();
+	
+	
+	// 메소드
+	public void mainMenu() {
+		
+	}
+	
+	public void addList() {
+		
+	}
+	
+	public void addAtZero() {
+		
+	}
+	
+	public void printAll() {
+		
+	}
+	
+	public void searchMusic() {
+		
+	}
+	
+	public void removeMusic() {
+		
+	}
+	
+	public void setMusic() {
+		
+	}
+	
+	public void ascTitle() {
+		
+	}
+	
+	public void descSinger() {
+		
+	}
+	
+}
