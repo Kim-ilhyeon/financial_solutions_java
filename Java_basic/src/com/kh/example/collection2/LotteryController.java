@@ -29,8 +29,9 @@ public class LotteryController {
 		List<Lottery> list = new ArrayList<>(4);
 		list.addAll(lottery);
 		if (lottery.size() >= 4) {
-			while (win.size() < 4) {	
+			while (win.size() < 4 && win.size() != lottery.size()) {	
 				int random = (int)(Math.random() * (list.size()-1));
+				// new Random().nextInt(n) : 0 ~ n-1까지의 랜덤 값
 				win.add(list.get(random));
 				list.remove(random);
 			}
@@ -45,12 +46,13 @@ public class LotteryController {
 	}
 	
 	public boolean searchWinner(Lottery l) {
-		for (Lottery wList : win) {
-			if (wList.equals(l)) {
-				return true;
-			}
-		}
-		return false;
+//		for (Lottery wList : win) {
+//			if (wList.equals(l)) {
+//				return true;
+//			}
+//		}
+//		return false;
+		return win.contains(l);
 	}
 
 }

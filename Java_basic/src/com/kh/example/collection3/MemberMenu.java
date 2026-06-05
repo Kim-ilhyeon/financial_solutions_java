@@ -74,8 +74,7 @@ public class MemberMenu {
 	}
 	
 	public void joinMembership() {
-		boolean isSuccess = true;
-		while (isSuccess) {
+		while (true) {
 			System.out.print("아이디 : ");
 			String id = sc.next();
 			System.out.print("비밀번호 : ");
@@ -86,7 +85,7 @@ public class MemberMenu {
 			boolean result = mc.joinMember(id, new Member(pwd, name));
 			if (result) {
 				System.out.println("성공적으로 회원가입 완료하였습니다.");
-				isSuccess = false;
+				return;
 			} else {
 				System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
 			}
@@ -94,8 +93,7 @@ public class MemberMenu {
 	}
 	
 	public void logIn() {
-		boolean isSuccess = true;
-		while (isSuccess) {
+		while (true) {
 			System.out.print("아이디 : ");
 			String id = sc.next();
 			System.out.print("비밀번호 : ");
@@ -105,11 +103,10 @@ public class MemberMenu {
 			String logInName = mc.logIn(id, pwd);
 			if (logInName == null) {
 				System.out.println("틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요.");
-				memberMenu();
-				return;
 			} else {
 				System.out.println(logInName + "님, 환영합니다!");
-				isSuccess = false;
+				memberMenu();
+				return;
 			}
 		}
 	}

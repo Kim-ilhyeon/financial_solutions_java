@@ -63,6 +63,9 @@ public class LotteryMenu {
 			
 			if (result) {
 				count++;
+			} else {
+				System.out.println("중복된 인원입니다. 다시 입력해주세요.");
+				i--;
 			}
 		}
 		if (count == countNum) {

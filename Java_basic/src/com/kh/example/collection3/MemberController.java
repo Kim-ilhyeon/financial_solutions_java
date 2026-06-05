@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class MemberController {
 	// 필드
-	Map<String, Member> map = new HashMap<>();
+	private Map<String, Member> map = new HashMap<>();
 	
 	// 메소드
 	public boolean joinMember(String id, Member m) {
@@ -57,11 +57,15 @@ public class MemberController {
 	}
 	
 	public TreeMap<String, String> sameName (String name) {
-		Set<Entry<String, Member>> set = map.entrySet();
-		for (Entry<String, Member> s : set) {
-//			boolean result = s.getValue().getName().equals(name);	// 여기부터 다시 수정해야됨
+		TreeMap<String, String> result = new TreeMap<>();
+		
+		for (Map.Entry<String, Member> e : map.entrySet()) {
+			Member m = e.getValue();
+			if (m != null && m.getName().equals(name)) {
+				result.put(e.getKey(), m.getName());
+			}
 		}
-		return null;
+		return result;
 	}
 	
 	
