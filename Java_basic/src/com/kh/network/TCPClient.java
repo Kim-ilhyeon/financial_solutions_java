@@ -1,0 +1,47 @@
+package com.kh.network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+public class TCPClient {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		PrintWriter pw = null;
+		BufferedReader br = null;
+		
+		// 요청하고자 하는 서버의 위치
+		String serverIp = "192.168.110.32";
+		int port = 3000;
+		
+		try {
+			Socket socket = new Socket(serverIp, port);
+			
+			if (socket != null) {
+				// 입력용 스트림(클라이언트로부터 전달된 값을 읽기 위함)
+				br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				
+				// 출력용 스트림(클라이언트로 전달하기 위함)
+				pw = new PrintWriter(socket.getOutputStream());
+
+				while (true) {
+					System.out.print("보낼 내용 : ");
+					String sendMsg = sc.nextLine();
+
+					pw.println(sendMsg);
+					pw.flush();
+					
+					String msg = br.readLine();
+					System.out.println("클라이언트 : " + msg);
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
