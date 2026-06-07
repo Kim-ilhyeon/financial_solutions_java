@@ -1,5 +1,6 @@
 package com.kh.assignment.banking;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BankingMenu {
@@ -82,9 +83,10 @@ public class BankingMenu {
 			System.out.println("***** 계좌 메뉴 *****");
 			System.out.println("1. 계좌 개설");
 			System.out.println("2. 계좌 잔액 조회");
-			System.out.println("3. 송금");
-			System.out.println("4. 나의 거래내역 조회");
-			System.out.println("5. 회원 메뉴로 돌아가기");
+			System.out.println("3. 입금");
+			System.out.println("4. 송금");
+			System.out.println("5. 나의 거래내역 조회");
+			System.out.println("6. 회원 메뉴로 돌아가기");
 			System.out.print("메뉴 번호 : ");
 			int menuNum = sc.nextInt();
 			sc.nextLine();
@@ -97,12 +99,15 @@ public class BankingMenu {
 				viewBalance();
 				break;
 			case 3 : 
-				transfer();
+				deposit();
 				break;
 			case 4 : 
-				viewTransaction();
+				transfer();
 				break;
 			case 5 : 
+				viewTransaction();
+				break;
+			case 6 : 
 				return;
 			default : 
 				System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
@@ -234,27 +239,112 @@ public class BankingMenu {
 	// 계좌 기능
 	// 계좌 개설
 	public void signUpAccount() {
-		
+		int result = bc.insertAccount();
+		if (result == 1) {
+			System.out.println("계좌 개설 성공");
+			return;
+		} else if (result == -1) {
+			System.out.println("이미 계좌가 존재합니다.");
+			return;
+		}
+		System.out.println("계좌 개설 실패ㅠ");
+	}
+	
+	// 계좌가 있는지 여부 확인
+	public boolean checkAccount() {
+		Account account = bc.getLoginedUser().getAccount();
+		if (account == null) {
+			return true;
+		}
+		return false;
 	}
 	
 	// 잔액 조회
 	public void viewBalance() {
+		if (checkAccount()) {
+			System.out.println("아직 계좌가 존재하지 않습니다.");
+			return;
+		}
 		
+		int balance = bc.viewBalance();
+		System.out.println("현재 잔액 : " + balance);
 	}
 	
-	// 거래내역 조회
-	public void viewTransaction() {
+	// 입금
+	public void deposit() {
+		if (checkAccount()) {
+			System.out.println("아직 계좌가 존재하지 않습니다.");
+			return;
+		}
 		
+		System.out.print("입금할 금액 : ");
+		int money = sc.nextInt();
+		sc.nextLine();
+		
+		int result = bc.deposit(money);
+		if (result == 1) {
+			System.out.println(money + "입금 성공");
+		} else {
+			System.out.println("입금 실패ㅠ");
+		}
 	}
 	
 	// 송금
 	public void transfer() {
+		if (checkAccount()) {
+			System.out.println("아직 계좌가 존재하지 않습니다.");
+			return;
+		}
 		
+		System.out.print("송금할 금액 : ");
+		int tMoney = sc.nextInt();
+		sc.nextLine();
+		System.out.print("보낼 계좌번호 : ");
+		String accountNo = sc.nextLine();
+		
+		int result = bc.transfer(tMoney, accountNo);
+		if (result == 1) {
+			System.out.println("송금 완료");
+		} else if (result == -1) {
+			System.out.println("잔액 부족");
+		} else {
+			System.out.println("송금 실패ㅠ");
+		}
 	}
+	
+	
+	// 거래내역 조회
+	public void viewTransaction() {
+		if (checkAccount()) {
+			System.out.println("아직 계좌가 존재하지 않습니다.");
+			return;
+		}
+		
+		System.out.println("[ 거래 내역 ]");
+		List<Transaction> transactions = bc.viewTransaction();
+		if (transactions.size() == 0) {
+			System.out.println("--- 거래 내역 없음 ---");
+		} else {
+			for (Transaction tr : transactions) {
+				System.out.println(tr);
+			}			
+		}
+	}
+	
 	
 	// 계좌 삭제
 	public void deleteAccount() {
+		if (checkAccount()) {
+			System.out.println("아직 계좌가 존재하지 않습니다.");
+			return;
+		}
 		
+		int result = bc.deleteAccount();
+		if (result == 1) {
+			System.out.println("계좌 삭제 성공");
+		} else {
+			System.out.println("계좌 삭제 실패ㅠ");
+		}
 	}
 	
 	

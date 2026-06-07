@@ -1,6 +1,7 @@
 package com.kh.assignment.banking;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,13 +31,21 @@ public class Account {
 		this.history = history;
 	}
 
+	public Account(String accountNo, int balance, List<Transaction> history) {
+		super();
+		this.accountNo = accountNo;
+		this.balance = balance;
+		this.history = history;
+	}
 	
-	
-	
+
 	// 메소드
 	@Override
 	public String toString() {
-		return accountNo + "\n잔액 : " + balance + "\n개설 일자 : " + openDate + "\n만료 일자 : "
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+		String openDateStr = (openDate != null) ? openDate.format(formatter) : "미정";
+		
+		return accountNo + "\n잔액 : " + balance + "\n개설 일자 : " + openDateStr + "\n만료 일자 : "
 				+ expireDate;
 	}	
 	

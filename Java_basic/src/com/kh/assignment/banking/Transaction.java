@@ -1,6 +1,7 @@
 package com.kh.assignment.banking;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Transaction {
@@ -18,16 +19,25 @@ public class Transaction {
 		super();
 	}
 
-	public Transaction(String type, int amount, String targetAccount, LocalDateTime transactionDate) {
+	public Transaction(String type, int amount, String targetAccount) {
 		super();
 		this.type = type;
 		this.amount = amount;
 		this.targetAccount = targetAccount;
-		this.transactionDate = transactionDate;
+		this.transactionDate = LocalDateTime.now();
 	}
 
 	
 	
+	@Override
+	public String toString() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd-HH:mm");
+		String formatDate = LocalDateTime.now().format(formatter);
+		
+		return type + " - " + amount + "원 - " + targetAccount
+				+ " / " + formatDate;
+	}
+
 	// 메소드
 	@Override
 	public int hashCode() {
