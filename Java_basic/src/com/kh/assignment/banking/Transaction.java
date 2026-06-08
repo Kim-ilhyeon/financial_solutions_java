@@ -28,30 +28,17 @@ public class Transaction {
 	}
 
 	
-	
+	// 메소드
 	@Override
 	public String toString() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd-HH:mm");
-		String formatDate = LocalDateTime.now().format(formatter);
+		String formatDate = transactionDate.format(formatter);
 		
 		return type + " - " + amount + "원 - " + targetAccount
 				+ " / " + formatDate;
 	}
 
-	// 메소드
-	@Override
-	public int hashCode() {
-		return Objects.hash(type, amount, targetAccount, transactionDate);
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		Transaction transaction = (Transaction)obj;
-		return this.type.equals(transaction.getType()) &&
-				this.amount == transaction.getAmount() &&
-				this.targetAccount.equals(transaction.getTargetAccount()) &&
-				this.transactionDate.equals(transaction.getTransactionDate());
-	}
+
 	
 	
 	

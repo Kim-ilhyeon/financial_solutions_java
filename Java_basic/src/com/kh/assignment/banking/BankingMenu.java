@@ -17,7 +17,7 @@ public class BankingMenu {
 			System.out.println("1. 회원가입");
 			System.out.println("2. 로그인");
 			System.out.println("3. 프로그램 종료");
-			System.out.println("메뉴 번호 : ");
+			System.out.print("메뉴 번호 : ");
 			int menuNum = sc.nextInt();
 			sc.nextLine();
 			
@@ -64,12 +64,19 @@ public class BankingMenu {
 				updatePassword();
 				break;
 			case 3 : 
-				deleteUser();
-				return;
+				int result = deleteUser();
+				switch (result) {
+				case 1 :
+					return;
+				case 2 : 
+					break;
+				}
+				break;
 			case 4 :
 				accountMenu();
 				break;
 			case 5 : 
+				logOut();	// bc의 필드인 loginedId와 loginedUser의 값을 null로 변경하기 위한 메소드
 				return;
 			default : 
 				System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
@@ -175,7 +182,13 @@ public class BankingMenu {
 		return false;
 	}
 	
-	// 3. 내 정보 조회 (사용자 입력: x)
+	// 3. 로그아웃 (사용자 입력 : X)
+	public void logOut() {
+		bc.setLoginedId(null);
+		bc.setLoginedUser(null);
+	}
+	
+	// 4. 내 정보 조회 (사용자 입력: x)
 	public void viewUser() {
 		// bc의 viewUser():User 메소드를 호출하여 로그인한 객체를 반환받아
 		// null이 아닌 경우에만 회원의 정보를 출력
@@ -194,7 +207,7 @@ public class BankingMenu {
 		
 	}
 	
-	// 4. 비밀번호 수정 (사용자 입력 : 기존 비밀번호, 변경할 비밀번호)
+	// 5. 비밀번호 수정 (사용자 입력 : 기존 비밀번호, 변경할 비밀번호)
 	public void updatePassword() {
 		int count = 0;	// 기존 비밀번호 확인 횟수
 		while (count < 3) {
@@ -204,7 +217,7 @@ public class BankingMenu {
 			String oldPwd = bc.getLoginedUser().getPassword();
 			
 			if (inputPwd.equals(oldPwd)) {	// 기존 비밀번호가 입력한 비밀번호와 일치할 경우에 newPwd를 입력받는 분기문
-				System.out.println("변경할 비밀번호 : ");
+				System.out.print("변경할 비밀번호 : ");
 				String newPwd = sc.next();
 				sc.nextLine();
 				
@@ -225,8 +238,8 @@ public class BankingMenu {
 		System.out.println("비밀번호를 3번 틀려서 다시 메뉴로 돌아갑니다.");
 	}
 	
-	// 5. 회원 탈퇴 (사용자 입력 : 기존 비밀번호)
-	public void deleteUser() {
+	// 6. 회원 탈퇴 (사용자 입력 : 기존 비밀번호)
+	public int deleteUser() {
 		int count = 0;	// 기존 비밀번호 확인 횟수
 		while (count < 3) {
 			System.out.print("기존 비밀번호 : ");
@@ -238,7 +251,7 @@ public class BankingMenu {
 				int result = bc.deleteUser(); // bc의 deleteUser():int 메소드를 호출하여 성공했을 경우 -> 1반환받음, 실패했을 경우 -> 0반환받음
 				if (result == 1) {
 					System.out.println("계정이 정상적으로 삭제되었습니다.");
-					return;					
+					return 1;					
 				} else {
 					System.out.println("계정 삭제 실패");
 				}
@@ -249,6 +262,7 @@ public class BankingMenu {
 		}
 		// count가 3이 되어 반복문을 탈출할 경우 기존비밀번호 확인불가 안내문 출력
 		System.out.println("비밀번호를 3번 틀려서 다시 메뉴로 돌아갑니다.");
+		return 0;
 	}
 	
 	// ----------------
@@ -373,8 +387,8 @@ public class BankingMenu {
 		}
 	}
 	
-	
-	// 6. 계좌 삭제
+	/*
+	// + 6. 계좌 삭제 = 계좌 만료 시 or 계좌 삭제 보기 추가
 	public void deleteAccount() {
 		if (checkAccount()) {
 			System.out.println("아직 계좌가 존재하지 않습니다.");
@@ -388,6 +402,7 @@ public class BankingMenu {
 			System.out.println("계좌 삭제 실패ㅠ");
 		}
 	}
+	*/
 	
 	
 }

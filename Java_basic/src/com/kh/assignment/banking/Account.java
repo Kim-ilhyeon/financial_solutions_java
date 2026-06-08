@@ -22,19 +22,12 @@ public class Account {
 		super();
 	}
 
-	public Account(String accountNo, int balance, LocalDate openDate, LocalDate expireDate, List<Transaction> history) {
-		super();
-		this.accountNo = accountNo;
-		this.balance = 0;
-		this.openDate = openDate;
-		this.expireDate = expireDate;
-		this.history = history;
-	}
-
 	public Account(String accountNo, int balance, List<Transaction> history) {
 		super();
 		this.accountNo = accountNo;
 		this.balance = balance;
+		this.openDate = LocalDate.now();
+		this.expireDate = this.openDate.plusYears(5);	// LoclaDate의 해당 날짜에서 1년후로 증가하는 메소드
 		this.history = history;
 	}
 	
@@ -45,32 +38,26 @@ public class Account {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 		String openDateStr = (openDate != null) ? openDate.format(formatter) : "미정";
 		
-		return accountNo + "\n잔액 : " + balance + "\n개설 일자 : " + openDateStr + "\n만료 일자 : "
+		return "계좌번호 : " + accountNo + "\n잔액 : " + balance + "원\n개설 일자 : " + openDateStr + "\n만료 일자 : "
 				+ expireDate;
 	}	
 	
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountNo, balance, openDate, expireDate);
+		return Objects.hash(accountNo);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Account account = (Account)obj;
-		return this.accountNo.equals(account.getAccountNo()) &&
-				this.balance == account.getBalance() &&
-				this.openDate.equals(account.getOpenDate()) &&
-				this.expireDate.equals(account.getExpireDate());
+		return this.accountNo.equals(account.getAccountNo());
+				
 	}
 
 	// getter / setter
 	public String getAccountNo() {
 		return accountNo;
-	}
-
-	public void setAccountNo(String accountNo) {
-		this.accountNo = accountNo;
 	}
 
 	public int getBalance() {
@@ -83,10 +70,6 @@ public class Account {
 
 	public LocalDate getOpenDate() {
 		return openDate;
-	}
-
-	public void setOpenDate(LocalDate openDate) {
-		this.openDate = openDate;
 	}
 
 	public LocalDate getExpireDate() {

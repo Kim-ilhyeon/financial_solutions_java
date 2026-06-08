@@ -22,22 +22,7 @@ public class User {
 	}
 
 	
-	// 메소드
-	@Override
-	public int hashCode() {
-		return Objects.hash(password, name, account);
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		User user = (User)obj;
-		return this.password.equals(user.getPassword()) 
-				&& this.name.equals(user.getName()) 
-				&& this.account.equals(user.getAccount());
-	}	
-	
-	
-	
+	// 메소드	
 	// getter / setter
 	public String getPassword() {
 		return password;

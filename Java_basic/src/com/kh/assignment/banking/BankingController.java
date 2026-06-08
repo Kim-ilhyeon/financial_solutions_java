@@ -106,7 +106,7 @@ public class BankingController {
 				accountNo = String.valueOf(random);
 				
 				for (User u : user.values()) {
-					if (u.getAccount() != null && !(u.getAccount().getAccountNo().equals(accountNo))) {
+					if (u.getAccount() != null && u.getAccount().getAccountNo().equals(accountNo)) {
 						isDuplicate = true;
 						break;
 					}
@@ -115,7 +115,7 @@ public class BankingController {
 			} while (isDuplicate);
 			
 			loginedUser.setAccount(new Account(accountNo, 0, new ArrayList()));
-			if (loginedUser.getAccount().getAccountNo() == accountNo) {
+			if (loginedUser.getAccount().getAccountNo().equals(accountNo)) {
 				return 1;	// 성공
 			}
 		} else {
@@ -157,6 +157,7 @@ public class BankingController {
 	// 송금 전 금액을 oldBalance변수에 저장, 송금 전 잔액이 송금하려는 금액보다 작은 경우에는 -1을 반환시킴(= 잔액 부족)
 	// 그게 아니라면 해당 계좌의 잔액을 setBalance()를 사용해 oldBalance-money(송금금액)으로 변경 후 금액 반영이 잘 되었는지를 확인해서
 	// Account객체의 필드인 List<Transaction>에 거래내역 추가 후 1을 반환시킴, 반영이 정상적으로 되지 않았다면 송금 전 금액으로 다시 변경 후 0을 반환시킴]
+	// + 실제 있는 계좌번호로만 송금이 가능하도록 수정(계좌번호 검증, 해당 계좌에는 금액이 증가하도록 수정 필요
 	public int transfer(int money, String accountNo) {
 		Account account = loginedUser.getAccount();
 		int oldBalance = account.getBalance();
@@ -183,7 +184,8 @@ public class BankingController {
 		return history;
 	}
 	
-	// 6. 계좌 삭제 
+	/*
+	// + 6. 계좌 삭제 = 계좌 만료 시 or 계좌 삭제 보기 추가
 	// [현재 클래스의 필드인 loginedUser에 접근하여 setAccount()메소드를 통해서 null로 값 변경 후
 	// 현재 로그인한 회원의 계좌의 값이 null인지 확인하여 삭제되었다면 1반환, null이 아니라면 0을 반환시킴]
 	public int deleteAccount() {		
@@ -194,11 +196,20 @@ public class BankingController {
 		}
 		return 0;		// 실패
 	}
+	*/
 
 
 	// getter / setter
 	public User getLoginedUser() {
 		return this.loginedUser;
+	}
+	
+	public void setLoginedId(String loginedId) {
+		this.loginedId = loginedId;
+	}
+	
+	public void setLoginedUser(User loginedUser) {
+		this.loginedUser = loginedUser;
 	}
 		
 	
