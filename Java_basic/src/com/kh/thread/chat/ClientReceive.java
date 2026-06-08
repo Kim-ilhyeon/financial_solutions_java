@@ -1,0 +1,19 @@
+package com.kh.thread.chat;
+
+import java.net.Socket;
+
+public class ClientReceive extends Thread {
+	private Socket socket;
+
+	public ClientReceive(Socket socket) {
+		super();
+		this.socket = socket;
+	}
+
+	@Override
+	public void run() {
+		
+	}
+	
+	
+}

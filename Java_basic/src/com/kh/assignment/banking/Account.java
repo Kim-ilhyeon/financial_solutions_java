@@ -41,20 +41,17 @@ public class Account {
 		return "계좌번호 : " + accountNo + "\n잔액 : " + balance + "원\n개설 일자 : " + openDateStr + "\n만료 일자 : "
 				+ expireDate;
 	}	
-	
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(accountNo);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		Account account = (Account)obj;
-		return this.accountNo.equals(account.getAccountNo());
-				
+		return this.accountNo.equals(account.getAccountNo());	
 	}
 
+	
 	// getter / setter
 	public String getAccountNo() {
 		return accountNo;

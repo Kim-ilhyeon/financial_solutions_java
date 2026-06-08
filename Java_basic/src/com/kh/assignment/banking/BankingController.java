@@ -8,7 +8,7 @@ import java.util.Map;
 public class BankingController {
 	// 필드
 	private Map<String, User> user = new HashMap<>();
-	// 아이디와 유저객체
+	// 로그인 한 아이디와 유저객체
 	private String loginedId;
 	private User loginedUser;
 	
