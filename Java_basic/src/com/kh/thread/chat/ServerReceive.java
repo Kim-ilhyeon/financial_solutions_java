@@ -16,10 +16,13 @@ public class ServerReceive extends Thread {
 
 	@Override
 	public void run() {
-		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		// 클라이언트로부터 전달받은 메세지를 계속 출력
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
+			while (true) {
+				String msg = br.readLine();
+				System.out.println("클라이언트 : " + msg);
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		super.run();

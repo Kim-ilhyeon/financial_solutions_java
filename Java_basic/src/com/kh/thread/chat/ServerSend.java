@@ -24,6 +24,9 @@ public class ServerSend extends Thread {
 			while (true) {
 				System.out.print("cli로 보낼 내용 : ");
 				String sendMsg = sc.nextLine();
+				
+				pw.println(sendMsg);
+				pw.flush();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

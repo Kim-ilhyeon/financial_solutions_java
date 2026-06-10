@@ -10,6 +10,7 @@ public class TCPServer {
 	public static void main(String[] args) {
 		// 1) 포트 지정
 		int port = 3000;
+		
 		try {
 			ServerSocket server = new ServerSocket(port);
 			
@@ -19,7 +20,11 @@ public class TCPServer {
 			InetAddress clientIp = socket.getInetAddress();
 			System.out.println(clientIp.getHostAddress() + "가 연결을 요청함. . .");
 			
-			ServerReceive
+			ServerReceive sr = new ServerReceive(socket);
+			sr.start();
+			
+			ServerSend ss = new ServerSend(socket);
+			ss.start();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
